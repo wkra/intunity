@@ -1,0 +1,87 @@
+@import "settings";
+@import "animation";
+@import "socialicons";
+@import "hamburger";
+@import "menu";
+@import "fonts";
+
+body, html {
+  height: 100%;
+  font-family: 'TitilliumWeb-Regular', 'Arial';
+  color: $white;
+  font-size: $tekstSize;
+  background-color: $black;
+  letter-spacing:2px;
+}
+
+a {
+  color: $white;
+  text-decoration: none;
+
+  &:focus, &:hover {
+    color: $gold;
+    outline: none;
+  }
+}
+h1{
+    text-align: center;
+}
+.gold {
+  color: $gold;
+}
+.white {
+  color: $white;
+}
+
+section {
+  $padding: 50px;
+  padding-top: $padding;
+  padding-bottom: $padding;
+
+  h1::after{
+    $width: 80px;
+    content: "";
+    height: 2px;
+    width: $width;
+    position: absolute;
+    background-color: $gold;
+    left: 50%;
+    margin-left: -$width/2;
+    transform: translateY(50px);
+  }
+  h1::before{
+    $width: 40px;
+    content: "";
+    height: 2px;
+    width: $width;
+    position: absolute;
+    background-color: $gold;
+    left: 50%;
+    margin-left: -$width/2;
+    transform: translateY(55px);
+  }
+}
+
+.bg-white {
+  background-color: $white;
+  color: $black;
+  a {
+    color: $black;
+}
+}
+.hr {
+  padding: 1px;
+  hr{
+    border-top: 1px solid $gold;
+  }
+}
+
+
+
+// IMPORT SECTIONS
+@import "header";
+@import "contact";
+@import "footer";
+
+// IMPORT MEDIA
+@import "media";

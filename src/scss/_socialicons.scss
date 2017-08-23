@@ -1,0 +1,63 @@
+/* social icon */
+.social-media{
+  svg {
+    width: 50px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  .icon {
+    fill: #ffffff;
+    stroke: rgba(0, 0, 0, 0.2);
+    stroke-width: 10px
+  }
+  .oval{
+    fill: rgba(0, 0, 0, 0.2);
+  }
+
+  path {
+    transition: 1s all;
+    transform-origin: 50% 50%;
+
+  }
+}
+
+.social-media svg:hover .oval{
+  transform: scale(0);
+  opacity: 0
+}
+.social-media svg:hover .icon {
+  transform: scale(1.8);
+  stroke-width: 0px;
+}
+.social-media .facebook:hover .icon{
+  fill: #3b5999;
+}
+.social-media .twitter:hover .icon{
+  fill: #55acee;
+}
+.social-media .google:hover .icon{
+  fill: #dd4b39;
+}
+.social-media .google:hover .plus{
+  transform: scale(1.8) translateX(40px);
+}
+.social-media .linkedin:hover .icon{
+  fill: #0077B5;
+}
+.social-media .linkedin:hover .dot{
+  transform: scale(1.8) translateY(-40px);
+}
+.social-media .linkedin:hover .n{
+  transform: scale(1.8) translateX(40px);
+}
+.social-media .youtube:hover .icon{
+  fill: #cd201f;
+}
+
+.socialOne, .socialTwo {
+  display: inline-block;
+
+}

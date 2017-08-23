@@ -1,0 +1,9 @@
+@keyframes brandAnimation {
+  $start: 10px;
+  0%  {width: $start}
+  15% {width: 20px}
+  30% {width: $start}
+  55% {width: 40px}
+  75%{width: $start}
+  100%{width: $start}
+}
