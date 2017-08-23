@@ -1,6 +1,6 @@
 # intunity web template
 
-<a href="">DEMO</a>
+<a href="https://wkra.github.io/intunity/dist">DEMO</a>
 
 - boilerplate
 - bootstrap
