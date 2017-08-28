@@ -1,8 +1,14 @@
 @import "settings";
 @import "fonts";
 
+$footerHeight: 60px; // IMPORTANT
+
 footer {
     padding: 15px 0;
+    position: fixed;
+    bottom: 0;
+    height: $footerHeight;
+    width: 100%;
   .footer-copyright {
     text-align: right;
     font-size: 10px;
@@ -17,4 +23,7 @@ footer {
       margin-bottom: 0;
     }
   }
+}
+section:last-of-type{
+  margin-bottom: $footerHeight;
 }
