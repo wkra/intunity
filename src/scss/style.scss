@@ -37,6 +37,7 @@ section {
   $padding: 50px;
   padding-top: $padding;
   padding-bottom: $padding;
+  z-index: 20;
 
   h1::after{
     $width: 80px;
