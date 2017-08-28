@@ -18,7 +18,8 @@ var config = {
   src: 'src/',
   // in
   cssin: 'src/css/**/*.css',
-  jsin: 'src/js/**/*.js',
+  //jsin: 'src/js/**/*.js',
+  jsin: 'src/js/*.js',
   imgin: 'src/img/**/*.{jpg,jpeg,png,gif}',
   htmlin: 'src/*.html',
   scssin: 'src/scss/**/*.scss',
@@ -112,6 +113,11 @@ gulp.task('copyfiles', function(){
         .pipe(gulp.dest(config.dist));
 });
 
+gulp.task('copyvendor', function(){
+    return gulp.src('src/js/vendor/*.js')
+        .pipe(gulp.dest('dist/js/vendor'));
+});
+
 gulp.task('fonts', function(){
     return gulp.src(config.fontsin)
         .pipe(gulp.dest(config.fontsout));
@@ -123,7 +129,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('build', function() {
-  sequence('clean', ['html', 'js', 'css', 'img', 'svg', 'copyfiles', 'fonts']);
+  sequence('clean', ['html', 'js', 'css', 'img', 'svg', 'copyfiles', 'copyvendor', 'fonts']);
 });
 
 gulp.task('default', ['serve']);

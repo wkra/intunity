@@ -7,7 +7,7 @@
 
 body, html {
   height: 100%;
-  font-family: 'TitilliumWeb-Regular', 'Arial';
+  font-family: $font;
   color: $white;
   font-size: $tekstSize;
   background-color: $black;
@@ -85,3 +85,6 @@ section {
 
 // IMPORT MEDIA
 @import "media";
+
+// IMPORT COOKIES
+@import "cookies";  

@@ -1,0 +1,17 @@
+@import "settings";
+
+#cookie-bar {
+  background: rgba(0, 0, 0, 0.78)!important;
+}
+#cookie-bar p {
+  font-family: $font;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #a2a2a2!important;
+}
+#cookie-bar-button {
+  background-color: transparent!important;
+  color: $gold!important;
+  text-decoration: underline!important;
+  font-weight: normal!important;
+}
