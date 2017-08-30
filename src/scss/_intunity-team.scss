@@ -1,0 +1,90 @@
+@import "fonts";
+@import "settings";
+#intunity-team{
+  .city{
+    padding: 20px 20px;
+  }
+  .city--team{
+    display:flex;
+    flex-direction: column;
+  }
+  .person{
+    $padding-top-bottom: 20px;
+    padding-top: $padding-top-bottom;
+    padding-bottom: $padding-top-bottom;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+  }
+  .person--photo{
+    width: 30%;
+    img {
+      border-radius: 50px; 
+      margin: auto;
+    }
+  }
+  .person--name{
+    box-sizing: border-box;
+    width: 70%;
+    padding-left: 15px;
+  }
+  h5{
+    cursor: pointer;
+  }
+  .person-opened{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+  }
+  .person-text{
+    img {
+      float: none;
+      padding-left: 15px;
+      padding-bottom: 15px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+  }
+}
+@media (min-width: 768px) {
+  #intunity-team{
+    .city{
+      padding: 20px 0;
+    }
+    .city--team{
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .person{
+      width: 50%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .person--photo{
+      width: 25%;
+    }
+    .person--name{
+      width: 75%;
+    }
+    .person-opened{
+      width: 100%;
+      margin-left: auto;
+    }
+    .person-text{
+      img {
+        float: right;
+        padding-left: 15px;
+        padding-bottom: 15px;
+        display: block;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+}

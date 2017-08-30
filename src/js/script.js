@@ -2,14 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // smooth scroll
-//(function(){
-//  $('nav a').on('click', function(event){
-//    event.preventDefault();
-//    $('html, body').animate({
-//      scrollTop: $( $.attr(this, 'href') ).offset().top
-//    }, 2000);
-//  });
-//})();
   $(function() {
   $('nav a[href*="#"]:not([href="#"])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -33,66 +25,125 @@ document.addEventListener("DOMContentLoaded", function () {
 //   // end social media icons
 
 
-//   // parallax effect
-// (function(){
-//
-//   var windowHeight = jQuery(window).height();
-//   var windowScrollPosTop = jQuery(window).scrollTop();
-//   var windowScrollPosBottom = windowHeight + windowScrollPosTop;
-//   var windowWidth = jQuery(window).width();
-//
-//   // start position flag
-//   var startFlagScroll = false;
-//
-//   function parEfFunc(){
-//     windowHeight = jQuery(window).height();
-//     windowScrollPosTop = jQuery(window).scrollTop();
-//     windowScrollPosBottom = windowHeight + windowScrollPosTop;
-//     windowWidth = jQuery(window).width();
-//
-//     myScrollVal(-100, 100, '.header-circle-container');
-//     var iconValue = 20;
-//     myScrollVal(-iconValue, iconValue, '.icon--a>img');
-//     myScrollVal(-15, 15, '.icon--b>img', 'X');
-//     myScrollVal(iconValue, -iconValue, '.icon--c>img');
-//
-//     if (windowWidth < 768){
-//       myScrollVal(-10, 40, '.bg2');
-//     } else {
-//       myScrollVal(-10, 20, '.bg2');
-//     }
-//     if (startFlagScroll === false){
-//       startFlagScroll = true;
-//     }
-//
-//   };
-//   parEfFunc();
-//   $(window).scroll(parEfFunc);
-//
-//
-//
-//   function myScrollVal(startValue, endValue, object, direction){
-//     if (direction === undefined){
-//       direction = 'Y';
-//     }
-//
-//     var objectOffset = jQuery(object).offset();
-//     var objectOffsetTop = objectOffset.top;
-//     var objectOffsetBottom = objectOffsetTop + jQuery(object).outerHeight();
-//
-//     if (windowScrollPosBottom > objectOffsetTop && windowScrollPosTop < (objectOffsetTop+$(object).height())){
-//
-// //      var scrollTop = $(this).scrollTop();
-//       $(object).css('transform', 'translate' + direction + '(' + Math.round((startValue+(((windowScrollPosBottom-objectOffsetTop)*(endValue-startValue))/(windowHeight+(objectOffsetBottom-objectOffsetTop))))) + '%)');
-//     } else if (startFlagScroll === false){
-// //      $(this).scrollTop();
-//       $(object).css('transform', 'translate' + direction + '(' + startValue + '%)');
-//     }
-//
-//   };
-//
-// })();
-//   //end parralax
+  // parallax effect
+  $('.parallax-window').parallax({imageSrc: '../img/photobg.jpg'}); 
+  $('.parallax-window2').parallax({imageSrc: '../img/bg.jpg'});
+  //end parralax
+
+  // intunity team section function
+  (function(){
+
+    // get data
+    $.ajax({
+      url: "../data/intunity-team.json",
+      type: "GET",
+      cache: true,
+      success: function (data, status, error) {
+        intunityTeamData = sort(data, sortCity);
+        printTeam(intunityTeamData);
+      },
+      error: function (data, status, error) {
+        console.log(status)
+        console.log(error)
+      }
+    });
+
+    var intunityTeamData = [];
+    var sortCity = ['Kraków', 'Wrocław', 'Łódź', 'Warszawa'];
+
+    // sort data by sortCity
+    function sort(data, template){
+      var newData = [];
+      for (var i = 0; i < template.length; i++){
+        for (var ii = 0; ii < data.length; ii++){
+          if (template[i] === data[ii].city){
+            newData.push(data[ii])
+          }
+        }
+      }
+      return newData;
+    };
+
+     // print team
+    function printTeam(data){
+      console.log(data);
+      var currCity = '';
+      var city = '<div class="city"><h2>%city%</h2></div><div class="city--team"></div>';
+      var person = '<div class="person %personEvenOdd%"><div class="person--photo"><img src="/img/default-person/smallphoto.jpg" alt="%nameAlt%" class="img-responsive"></div><div class="person--name"><h3>%name%</h3><h4>%instrument%</h4><h5 class="read-more" data-moreid="%moreid%">więcej...</h5></div></div><div class="person-text %contentid%"></div>';
+
+      for (var i = 0; i < data.length; i++){
+        if (data[i].city !== currCity){
+          if (data[i] !== 0){
+            
+          }
+          currCity = data[i].city;
+          var newCity = city.replace('%city%', data[i].city);
+          $('.intunityTeamContent').append(newCity)
+        }
+        var newPerson = '';
+        if (i%2 === 0){
+          newPerson = person.replace('%personEvenOdd%', 'personEven');
+        }
+        if (i%2 !== 0){
+          newPerson = person.replace('%personEvenOdd%', 'personOdd');
+        }
+        if (data[i].smallphoto !== '' && data[i].url !== ''){
+          newPerson = newPerson.replace('default-person', data[i].url);
+          newPerson = newPerson.replace('smallphoto.jpg', data[i].smallphoto);
+        }
+        newPerson = newPerson.replace('%nameAlt%', data[i].name);
+        newPerson = newPerson.replace('%name%', data[i].name);
+        newPerson = newPerson.replace('%instrument%', data[i].instrument);
+
+        if (data[i].text === ''){
+          newPerson = newPerson.replace('<h5 class="read-more" data-moreid="%moreid%">więcej...</h5>', '');
+        }
+        if (data[i].text !== ''){
+          newPerson = newPerson.replace('%moreid%', i);
+          
+        }
+        newPerson = newPerson.replace('%contentid%', 'id'+i);
+        $('.city--team:last').append(newPerson);
+
+      }
+    }
+
+    var bigPhoto = '<img src="/img/%url%/%bigphoto%" alt="%alt%" class="img-responsive">';
+    //event listener
+    $('.intunityTeamContent').click(function(el){
+      if (el.target.className === 'read-more'){
+        var id = Number(el.target.attributes[1].value);
+        if (intunityTeamData[id].bigphoto !== ''){
+          var newBigPhoto = bigPhoto.replace('%url%', intunityTeamData[id].url);
+          newBigPhoto = newBigPhoto.replace('%bigphoto%', intunityTeamData[id].bigphoto);
+          newBigPhoto = newBigPhoto.replace('%alt%', intunityTeamData[id].name);
+          $('.id'+id).html("<h2>" + intunityTeamData[id].name + "</h2>" + newBigPhoto + intunityTeamData[id].text).addClass('person-opened');
+        } else {
+          $('.id'+id).html("<h2>" + intunityTeamData[id].name + "</h2>" + intunityTeamData[id].text).addClass('person-opened');
+        }
+       
+      }
+      // var windowWidth = $(window).width()
+      // if (el.target.className === 'read-more'){
+      //   var id = Number(el.target.attributes[1].value);
+      //   if (windowWidth >= 768 && id%2 === 0){
+      //     $('.id'+(id+1)).html("<h2>" + intunityTeamData[id].name + "</h2>" + intunityTeamData[id].text).addClass('person-opened')
+      //   } else {
+      //     $('.id'+id).html("<h2>" + intunityTeamData[id].name + "</h2>" + intunityTeamData[id].text).addClass('person-opened')
+      //   }
+        
+      // }
+
+    })
+    // $('.intunityTeamContent').on( "click", ".read-more", function() {
+    //   console.log($( this ).parent().parent().next())
+    // });
+    // $('.intunityTeamContent').on( "click", ".read-more", function() {
+    //   console.log($( this ).parent().parent().next())
+    // });
+
+  })()
+  // end intunity team
 
 // end DOMContentLoaded
 });

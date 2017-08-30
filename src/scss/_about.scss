@@ -1,0 +1,38 @@
+#about{
+  .flex-container{
+    display: flex;
+    flex-direction: column;
+  }
+  p {
+    text-align: justify;
+    font-size: 15px;
+  }
+  img{
+        box-shadow: 0 0 12px 0px #737373;
+  }
+}
+
+@media (min-width: 768px) {
+  #about{
+    .flex-container{
+      flex-direction: row;
+      align-items: center;
+      .order1{
+        order:1;
+      }      
+      .order2{
+        order:2;
+      }
+    .flex-item--40{
+      box-sizing: border-box;
+      width: 40%;
+      padding: 30px;
+    }
+    .flex-item--60{
+      box-sizing: border-box;
+      width: 60%;
+      padding: 30px;
+    }
+  }
+}
+}

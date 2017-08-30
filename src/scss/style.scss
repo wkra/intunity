@@ -9,8 +9,6 @@ body, html {
   height: 100%;
   font-family: $font;
   color: $white;
-  font-size: $tekstSize;
-  background-color: $black;
   letter-spacing:2px;
 }
 
@@ -23,9 +21,11 @@ a {
     outline: none;
   }
 }
-h1{
+
+ .underline{
     text-align: center;
-}
+  } 
+
 .gold {
   color: $gold;
 }
@@ -34,12 +34,13 @@ h1{
 }
 
 section {
-  $padding: 50px;
+  $padding: 80px;
   padding-top: $padding;
   padding-bottom: $padding;
-  z-index: 20;
+  z-index: 19;
+  position: relative;
 
-  h1::after{
+  .underline::after{
     $width: 80px;
     content: "";
     height: 2px;
@@ -50,7 +51,7 @@ section {
     margin-left: -$width/2;
     transform: translateY(50px);
   }
-  h1::before{
+  .underline::before{
     $width: 40px;
     content: "";
     height: 2px;
@@ -77,10 +78,32 @@ section {
   }
 }
 
+.img-center{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img-margin-vertical{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.parallax-window {
+  min-height: 400px;
+  background: transparent;
+}
+.parallax-window2 {
+  min-height: 400px;
+  background: transparent;
+}
+
+
 
 
 // IMPORT SECTIONS
 @import "header";
+@import "about";
+@import "photo";
+@import "intunity-team";
 @import "contact";
 @import "footer";
 

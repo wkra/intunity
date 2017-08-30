@@ -3,18 +3,21 @@
 
 $footerHeight: 60px; // IMPORTANT
 
-footer {
+footer{
     padding: 15px 0;
-    position: fixed;
+    // position: fixed;
     bottom: 0;
     height: $footerHeight;
     width: 100%;
     z-index: 10;
-  .footer-copyright {
+    margin-top: -50px;
+    background-color: #000000;
+  .footer-copyright{
     text-align: right;
-    font-size: 10px;
+    
     p {
       margin: 0;
+      font-size: 10px;
     }
   }
   .footer-contact {

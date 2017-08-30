@@ -149,8 +149,6 @@ body, html {
   height: 100%;
   font-family: "TitilliumWeb-Regular", "Arial";
   color: #ffffff;
-  font-size: 20px;
-  background-color: #000000;
   letter-spacing: 2px; }
 
 a {
@@ -160,7 +158,7 @@ a {
     color: #e39e1b;
     outline: none; }
 
-h1 {
+.underline {
   text-align: center; }
 
 .gold {
@@ -170,10 +168,11 @@ h1 {
   color: #ffffff; }
 
 section {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  z-index: 20; }
-  section h1::after {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  z-index: 19;
+  position: relative; }
+  section .underline::after {
     content: "";
     height: 2px;
     width: 80px;
@@ -183,7 +182,7 @@ section {
     margin-left: -40px;
     -ms-transform: translateY(50px);
         transform: translateY(50px); }
-  section h1::before {
+  section .underline::before {
     content: "";
     height: 2px;
     width: 40px;
@@ -196,14 +195,30 @@ section {
 
 .bg-white {
   background-color: #ffffff;
-  color: #000000; }
+  color: #313131; }
   .bg-white a {
-    color: #000000; }
+    color: #313131; }
 
 .hr {
   padding: 1px; }
   .hr hr {
     border-top: 1px solid #e39e1b; }
+
+.img-center {
+  margin-left: auto;
+  margin-right: auto; }
+
+.img-margin-vertical {
+  margin-top: 30px;
+  margin-bottom: 30px; }
+
+.parallax-window {
+  min-height: 400px;
+  background: transparent; }
+
+.parallax-window2 {
+  min-height: 400px;
+  background: transparent; }
 
 @font-face {
   font-family: "TitilliumWeb-Regular";
@@ -216,12 +231,6 @@ section {
 #header {
   height: 100%;
   width: 100%;
-  background: url("../img/bg.jpg");
-  background-color: #000000;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 70%;
-  box-shadow: 0px 0px 20px 0px #a8a8a8;
   position: relative;
   z-index: 20; }
   #header .brand-text {
@@ -242,7 +251,8 @@ section {
   #header p {
     margin-top: 12px;
     font-size: 15px;
-    letter-spacing: 8px; }
+    letter-spacing: 8px;
+    text-align: center; }
 
 @media (min-width: 768px) {
   #header h1, #header p {
@@ -261,6 +271,129 @@ section {
     #header .brand-text {
       top: 45%; } }
 
+#about .flex-container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column; }
+
+#about p {
+  text-align: justify;
+  font-size: 15px; }
+
+#about img {
+  box-shadow: 0 0 12px 0px #737373; }
+
+@media (min-width: 768px) {
+  #about .flex-container {
+    -ms-flex-direction: row;
+        flex-direction: row;
+    -ms-flex-align: center;
+        align-items: center; }
+    #about .flex-container .order1 {
+      -ms-flex-order: 1;
+          order: 1; }
+    #about .flex-container .order2 {
+      -ms-flex-order: 2;
+          order: 2; }
+    #about .flex-container .flex-item--40 {
+      box-sizing: border-box;
+      width: 40%;
+      padding: 30px; }
+    #about .flex-container .flex-item--60 {
+      box-sizing: border-box;
+      width: 60%;
+      padding: 30px; } }
+
+#photo {
+  box-sizing: border-box;
+  width: 100%;
+  height: 400px; }
+
+@font-face {
+  font-family: "TitilliumWeb-Regular";
+  src: url("../fonts/TitilliumWeb-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "TitilliumWeb-Light";
+  src: url("../fonts/TitilliumWeb-Light.ttf") format("truetype"); }
+
+#intunity-team .city {
+  padding: 20px 20px; }
+
+#intunity-team .city--team {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column; }
+
+#intunity-team .person {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+  -ms-flex-align: center;
+      align-items: center; }
+
+#intunity-team .person--photo {
+  width: 30%; }
+  #intunity-team .person--photo img {
+    border-radius: 50px;
+    margin: auto; }
+
+#intunity-team .person--name {
+  box-sizing: border-box;
+  width: 70%;
+  padding-left: 15px; }
+
+#intunity-team h5 {
+  cursor: pointer; }
+
+#intunity-team .person-opened {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: justify; }
+
+#intunity-team .person-text img {
+  float: none;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+@media (min-width: 768px) {
+  #intunity-team .city {
+    padding: 20px 0; }
+  #intunity-team .city--team {
+    -ms-flex-direction: row;
+        flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
+  #intunity-team .person {
+    width: 50%;
+    margin-left: 0;
+    margin-right: 0; }
+  #intunity-team .person--photo {
+    width: 25%; }
+  #intunity-team .person--name {
+    width: 75%; }
+  #intunity-team .person-opened {
+    width: 100%;
+    margin-left: auto; }
+  #intunity-team .person-text img {
+    float: right;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    display: block;
+    margin-left: 0;
+    margin-right: 0; } }
+
 #contact h1 {
   padding-bottom: 50px; }
 
@@ -269,6 +402,9 @@ section {
 
 #contact h2, #contact h3, #contact h4, #contact p {
   text-align: center; }
+
+#contact p {
+  font-size: 20px; }
 
 @font-face {
   font-family: "TitilliumWeb-Regular";
@@ -280,16 +416,17 @@ section {
 
 footer {
   padding: 15px 0;
-  position: fixed;
   bottom: 0;
   height: 60px;
   width: 100%;
-  z-index: 10; }
+  z-index: 10;
+  margin-top: -50px;
+  background-color: #000000; }
   footer .footer-copyright {
-    text-align: right;
-    font-size: 10px; }
+    text-align: right; }
     footer .footer-copyright p {
-      margin: 0; }
+      margin: 0;
+      font-size: 10px; }
   footer .footer-contact p {
     font-family: "TitilliumWeb-Light";
     font-size: 15px;
@@ -305,10 +442,12 @@ section:last-of-type {
   font-family: "TitilliumWeb-Regular", "Arial";
   font-size: 12px;
   letter-spacing: 1px;
-  color: #a2a2a2 !important; }
+  color: #e39e1b !important; }
 
 #cookie-bar-button {
   background-color: transparent !important;
   color: #e39e1b !important;
   text-decoration: underline !important;
-  font-weight: normal !important; }
+  font-weight: normal !important;
+  border-bottom: none !important;
+  border-radius: 0 !important; }

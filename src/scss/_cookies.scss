@@ -7,11 +7,13 @@
   font-family: $font;
   font-size: 12px;
   letter-spacing: 1px;
-  color: #a2a2a2!important;
+  color: #e39e1b!important;
 }
 #cookie-bar-button {
   background-color: transparent!important;
   color: $gold!important;
   text-decoration: underline!important;
   font-weight: normal!important;
+  border-bottom: none!important;
+  border-radius: 0!important;
 }
