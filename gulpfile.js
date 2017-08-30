@@ -25,6 +25,7 @@ var config = {
   scssin: 'src/scss/**/*.scss',
   svgin: 'src/svg/**/*.svg',
   fontsin: 'src/fonts/**/*.*',
+  datain: 'src/data/**/*.*',
   // out
   cssout: 'dist/css/',
   jsout: 'dist/js/',
@@ -33,6 +34,7 @@ var config = {
   scssout: 'src/css/',
   svgout: 'dist/svg/',
   fontsout: 'dist/fonts/',
+  dataout: 'dist/data/',
   // names
   cssoutname: 'style.css',
   jsoutname: 'script.js',
@@ -117,19 +119,26 @@ gulp.task('copyvendor', function(){
     return gulp.src('src/js/vendor/*.js')
         .pipe(gulp.dest('dist/js/vendor'));
 });
+gulp.task('copyparallax', function(){
+    return gulp.src('src/js/parallax/*.js')
+        .pipe(gulp.dest('dist/js/parallax'));
+});
 
 gulp.task('fonts', function(){
     return gulp.src(config.fontsin)
         .pipe(gulp.dest(config.fontsout));
 });
-
+gulp.task('data', function(){
+    return gulp.src(config.datain)
+        .pipe(gulp.dest(config.dataout));
+});
 
 gulp.task('clean', function() {
   return del([config.dist]);
 });
 
 gulp.task('build', function() {
-  sequence('clean', ['html', 'js', 'css', 'img', 'svg', 'copyfiles', 'copyvendor', 'fonts']);
+  sequence('clean', ['html', 'js', 'css', 'img', 'svg', 'copyfiles', 'copyvendor', 'copyparallax', 'fonts', 'data']);
 });
 
 gulp.task('default', ['serve']);

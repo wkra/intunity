@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // parallax effect
-  $('.parallax-window').parallax({imageSrc: '../img/photobg.jpg'}); 
-  $('.parallax-window2').parallax({imageSrc: '../img/bg.jpg'});
+  $('.parallax-window').parallax({imageSrc: './img/photobg.jpg'}); 
+  $('.parallax-window2').parallax({imageSrc: './img/bg.jpg'});
   //end parralax
 
   // intunity team section function
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // get data
     $.ajax({
-      url: "../data/intunity-team.json",
+      url: "./data/intunity-team.json",
       type: "GET",
       cache: true,
       success: function (data, status, error) {
@@ -66,10 +66,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
      // print team
     function printTeam(data){
-      console.log(data);
       var currCity = '';
       var city = '<div class="city"><h2>%city%</h2></div><div class="city--team"></div>';
-      var person = '<div class="person %personEvenOdd%"><div class="person--photo"><img src="/img/default-person/smallphoto.jpg" alt="%nameAlt%" class="img-responsive"></div><div class="person--name"><h3>%name%</h3><h4>%instrument%</h4><h5 class="read-more" data-moreid="%moreid%">więcej...</h5></div></div><div class="person-text %contentid%"></div>';
+      var person = '<div class="person %personEvenOdd%"><div class="person--photo"><img src="./img/default-person/smallphoto.jpg" alt="%nameAlt%" class="img-responsive"></div><div class="person--name"><h3>%name%</h3><h4>%instrument%</h4><h5 class="read-more" data-moreid="%moreid%">więcej...</h5></div></div><div class="person-text %contentid%"></div>';
 
       for (var i = 0; i < data.length; i++){
         if (data[i].city !== currCity){
@@ -108,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    var bigPhoto = '<img src="/img/%url%/%bigphoto%" alt="%alt%" class="img-responsive">';
+    var bigPhoto = '<img src="./img/%url%/%bigphoto%" alt="%alt%" class="img-responsive">';
     //event listener
     $('.intunityTeamContent').click(function(el){
       if (el.target.className === 'read-more'){
