@@ -151,6 +151,9 @@ body, html {
   color: #ffffff;
   letter-spacing: 2px; }
 
+body {
+  background-color: #000000; }
+
 a {
   color: #ffffff;
   text-decoration: none; }
@@ -231,6 +234,9 @@ section {
 #header {
   height: 100%;
   width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 70% !important;
   position: relative;
   z-index: 20; }
   #header .brand-text {
