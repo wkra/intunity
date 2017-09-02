@@ -1,0 +1,40 @@
+.flex-container{
+  display: flex;
+  flex-direction: column;
+}
+footer{
+  .flex-container{
+    flex-direction: row;
+    .flex-item--50{
+      width: 50%;
+    } 
+  }
+}
+
+@media (min-width: 768px) {
+  .flex-container{
+    flex-direction: row;
+    align-items: center;
+    .order1{
+      order:1;
+    }      
+    .order2{
+      order:2;
+    }
+    .flex-item--40{
+      box-sizing: border-box;
+      width: 40%;
+      padding: 30px;
+    }
+    .flex-item--50{
+      box-sizing: border-box;
+      width: 50%;
+      padding: 30px;
+    }    
+    .flex-item--60{
+      box-sizing: border-box;
+      width: 60%;
+      padding: 30px;
+    }
+  }
+}

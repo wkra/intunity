@@ -4,6 +4,7 @@
 @import "hamburger";
 @import "menu";
 @import "fonts";
+@import "flex";
 
 body, html {
   height: 100%;
@@ -13,6 +14,12 @@ body, html {
 }
 body{
   background-color: #000000;
+}
+html {
+  background-color: #000000;
+}
+h1{
+  font-weight: bold;
 }
 
 a {
@@ -43,7 +50,19 @@ section {
   z-index: 19;
   position: relative;
 
+  .underline:hover.underline::after{
+    $width: 100px;
+    width: $width;
+    margin-left: -$width/2;
+  }  
+  .underline:hover.underline::before{
+    $width: 50px;
+    width: $width;
+    margin-left: -$width/2;
+  }
+
   .underline::after{
+    transition: 1s all;
     $width: 80px;
     content: "";
     height: 2px;
@@ -52,9 +71,10 @@ section {
     background-color: $gold;
     left: 50%;
     margin-left: -$width/2;
-    transform: translateY(50px);
+    transform: translateY(40px);
   }
   .underline::before{
+    transition: 1s all;
     $width: 40px;
     content: "";
     height: 2px;
@@ -63,7 +83,7 @@ section {
     background-color: $gold;
     left: 50%;
     margin-left: -$width/2;
-    transform: translateY(55px);
+    transform: translateY(45px);
   }
 }
 
@@ -80,6 +100,14 @@ section {
     border-top: 1px solid $gold;
   }
 }
+hr{
+  display: block;
+  height: 0;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 0;
+  padding: 0;
+}
 
 .img-center{
   margin-left: auto;
@@ -90,14 +118,8 @@ section {
   margin-top: 30px;
   margin-bottom: 30px;
 }
-.parallax-window {
-  min-height: 400px;
-  background: transparent;
-}
-.parallax-window2 {
-  min-height: 400px;
-  background: transparent;
-}
+
+
 
 
 

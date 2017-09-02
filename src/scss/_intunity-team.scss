@@ -21,10 +21,14 @@
   }
   .person--photo{
     width: 30%;
+    transition: 1s all;
     img {
       border-radius: 50px; 
       margin: auto;
       box-shadow: 0 0 6px 0px #878787;
+    }
+    &:hover{
+      transform: scale(0.98);
     }
   }
   .person--name{
@@ -34,14 +38,14 @@
   }
   h5{
     cursor: pointer;
-  }
-  .person-opened{
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: justify;
+    &:hover{
+      text-decoration: underline;
+    }
   }
   .person-text{
+    overflow: hidden;
+    transition: 2s opacity;
+    opacity: 0;
     img {
       float: none;
       padding-left: 15px;
@@ -50,8 +54,28 @@
       margin-left: auto;
       margin-right: auto;
     }
-
   }
+  .person-closed{
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+  .person-opened{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+    opacity: 1;
+    img {
+      transition: 1s all;
+      opacity: 0.8;
+    }
+
+    img:hover{
+      opacity: 1;
+    }
+  }
+
 }
 @media (min-width: 768px) {
   #intunity-team{
@@ -81,11 +105,12 @@
       img {
         float: right;
         padding-left: 15px;
-        padding-bottom: 15px;
+        padding-bottom: 10px;
         display: block;
         margin-left: 0;
         margin-right: 0;
       }
+
     }
   }
 }
