@@ -68,11 +68,10 @@
     opacity: 1;
     img {
       transition: 1s all;
-      opacity: 0.8;
     }
 
     img:hover{
-      opacity: 1;
+      transform: scale(1.01);
     }
   }
 
