@@ -5,6 +5,7 @@ $menuTekstColor: #ffffff;
 
 .nav li a {
   font-size: 16px;
+  display: inline-block;
 }
 .nav>li>a:focus, .nav>li>a:hover {
     text-decoration: none;

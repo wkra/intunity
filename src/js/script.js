@@ -32,38 +32,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // intunity team section function
   (function(){
+    //path variable
+    var pathname = window.location.pathname; 
 
     // get data
-    $.ajax({
-      url: "./data/intunity-team.json",
-      type: "GET",
-      cache: true,
-      success: function (data, status, error) {
-        intunityTeamData = data;
-        // intunityTeamData = sort(data, sortCity);
-        printTeam(intunityTeamData);
-      },
-      error: function (data, status, error) {
-        console.log(status)
-        console.log(error)
-      }
-    });
+    // en
+    if (pathname === "/en.html"){
+      $.ajax({
+        url: "./data/intunity-team_en.json",
+        type: "GET",
+        cache: true,
+        success: function (data, status, error) {
+          intunityTeamData = data;
+          // intunityTeamData = sort(data, sortCity);
+          printTeam(intunityTeamData);
+        },
+        error: function (data, status, error) {
+          console.log(status)
+          console.log(error)
+        }
+      });
+    } else {
+      // pl
+      $.ajax({
+        url: "./data/intunity-team.json",
+        type: "GET",
+        cache: true,
+        success: function (data, status, error) {
+          intunityTeamData = data;
+          // intunityTeamData = sort(data, sortCity);
+          printTeam(intunityTeamData);
+        },
+        error: function (data, status, error) {
+          console.log(status)
+          console.log(error)
+        }
+      });
+    }
+
 
     var intunityTeamData = [];
-    // var sortCity = ['Kraków', 'Wrocław', 'Łódź', 'Warszawa'];
-
-    // // sort data by sortCity
-    // function sort(data, template){
-    //   var newData = [];
-    //   for (var i = 0; i < template.length; i++){
-    //     for (var ii = 0; ii < data.length; ii++){
-    //       if (template[i] === data[ii].city){
-    //         newData.push(data[ii])
-    //       }
-    //     }
-    //   }
-    //   return newData;
-    // };
 
      // print team
     function printTeam(data){
@@ -90,10 +98,25 @@ document.addEventListener("DOMContentLoaded", function () {
           newPerson = newPerson.replace('default-person', data[i].url);
           newPerson = newPerson.replace('smallphoto.jpg', data[i].smallphoto);
         }
-        // if no person text remove "więcej"
-        if (data[i].text === ''){
-          newPerson = newPerson.replace('<h5 class="read-more" data-moreid="%moreid%">więcej...</h5>', '');
+        // if /en.html change "więcej..."
+        var pathname = window.location.pathname; 
+        
+        if (pathname === "/en.html"){
+          newPerson = newPerson.replace('więcej...', 'more...');
         }
+        // if no person full text remove "więcej"
+        // en
+        if (pathname === "/en.html"){
+          if (data[i].text === ''){
+            newPerson = newPerson.replace('<h5 class="read-more" data-moreid="%moreid%">more...</h5>', '');
+          }
+        } else {
+          // pl
+          if (data[i].text === ''){
+            newPerson = newPerson.replace('<h5 class="read-more" data-moreid="%moreid%">więcej...</h5>', '');
+          }
+        }
+
         if (data[i].text !== ''){
           newPerson = newPerson.replace('%moreid%', i);
         }
@@ -105,7 +128,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     //event listener
-    $('.intunityTeamContent').on( 'click', '.read-more', readMoreFunc);    
+    $('.intunityTeamContent').on( 'click', '.read-more', readMoreFunc);  
+    
+    //path variable
+    var pathname = window.location.pathname; 
     
     // read more function
     function readMoreFunc(){
@@ -117,6 +143,8 @@ document.addEventListener("DOMContentLoaded", function () {
       //more text change
       var changeMore = 'zwiń...';
       var originalMore = 'więcej...';
+      var changeMoreEn = 'less...';
+      var originalMoreEn = 'more...';
 
       // get id
       var id = Number($(this).attr('data-moreid'));
@@ -140,7 +168,15 @@ document.addEventListener("DOMContentLoaded", function () {
         .html('<h2><strong>' + intunityTeamData[id].name + '</strong></h2>' + newBigPhoto + intunityTeamData[id].text);
         
         //change read more
-        $(this).text(changeMore);
+        // en ver
+        if (pathname === "/en.html"){
+          $(this).text(changeMoreEn);
+        }
+        else {
+          // pl ver
+          $(this).text(changeMore);
+        } 
+        
 
       } else {
         // next clicks
@@ -148,13 +184,27 @@ document.addEventListener("DOMContentLoaded", function () {
         // toggle class
         $(this).parent().parent().next()
         .toggleClass(openClass).toggleClass(closeClass);
-
+        
         // toggle read more
-        if ($(this).text() === changeMore){
-          $(this).text(originalMore);
-        } else {
-          $(this).text(changeMore);
+        // en ver
+        if (pathname === "/en.html"){
+          
+          if ($(this).text() === changeMoreEn){
+            $(this).text(originalMoreEn);
+          } else {
+            $(this).text(changeMoreEn);
+          }
         }
+        else {
+          // pl ver
+          if ($(this).text() === changeMore){
+            $(this).text(originalMore);
+          } else {
+            $(this).text(changeMore);
+          }
+        }
+        
+
       }
     }
     // end read more function
